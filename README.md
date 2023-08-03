@@ -1,10 +1,10 @@
 ## 项目准备
 
-#### **描述**:
+### 描述:
 
 WeatherQuest 是一个动态的 web 应用，旨在为用户提供准确、及时和可视化的天气信息。应用的前端使用 React 构建，并利用 ECharts 提供丰富的数据可视化。后端服务由 Flask 提供，与 open-meteo API 进行交互以获取天气数据。通过整合这些技术，WeatherQuest 旨在为用户提供一个简洁、高效且用户友好的天气查询体验。
 
-#### **主要特点**:
+### 主要特点:
 
 1. **实时天气查询**：用户可以输入城市名称或地理坐标，快速获取当前的天气情况。
 2. **详细的天气预报**：除了实时数据，应用还提供未来几天的天气预测，包括温度、湿度、降雨量等。
@@ -17,10 +17,10 @@ WeatherQuest 是一个动态的 web 应用，旨在为用户提供准确、及�
 
 - **前端**: ReactJS, ECharts, Webpack, Node.js, TailwindCSS
 - **后端**: Flask
-- **数据源**: open-meteo API
+- **数据源**: open-meteo API, [和风天气 API](https://dev.qweather.com/docs/api/)
 - **版本控制**: Git
 
-#### **预期成果**:
+### **预期成果**:
 
 1. 一个完整、可部署的 web 应用，用户可以通过该应用进行天气查询。
 2. 代码库，包含所有源代码、注释、测试和文档。
@@ -50,6 +50,28 @@ WeatherQuest 是一个动态的 web 应用，旨在为用户提供准确、及�
 |                  | 气压                 | PRESSURE 29.73 inHg                                          |
 | **其他文本**     | 天气的具体情况或解释 | It's perfectly clear right now, Humidity is making it feel warmer |
 
-### 后端
+### 
 
-#### API
+### API 数据源
+
+#### 和风天气
+
+##### 错误状态码
+
+[错误状态码](https://dev.qweather.com/docs/resource/status-code/)
+
+| Code | State                                                        |
+| ---- | ------------------------------------------------------------ |
+| 200  | 请求成功                                                     |
+| 204  | 请求成功，但你查询的地区暂时没有你需要的数据。               |
+| 400  | 请求错误，可能包含错误的请求参数或缺少必选的请求参数。       |
+| 401  | 认证失败，可能使用了错误的KEY、[数字签名](https://dev.qweather.com/docs/resource/signature-auth/)错误、KEY的类型错误（如使用SDK的KEY去访问Web API）。 |
+| 402  | 超过访问次数或余额不足以支持继续访问服务，你可以充值、升级访问量或等待访问量重置。 |
+| 403  | 无访问权限，可能是绑定的PackageName、BundleID、域名IP地址不一致，或者是需要额外付费的数据。 |
+| 404  | 查询的数据或地区不存在。                                     |
+| 429  | 超过限定的QPM（每分钟访问次数），请参考[QPM说明](https://dev.qweather.com/docs/resource/glossary/#qpm) |
+| 500  | 无响应或超时，接口服务异常请[联系我们](https://www.qweather.com/contact) |
+
+
+
+### 后端
